@@ -1,0 +1,40 @@
+.UpdateEmployee {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4ecf7 100%);
+  font-family: "Roboto", sans-serif;
+}
+
+.UpdateEmployee form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.UpdateEmployee input,
+.UpdateEmployee button {
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.UpdateEmployee button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.UpdateEmployee button:hover {
+  transform: scale(1.03);
+}
+
+.UpdateEmployee .MuiPaper-root {
+  border-radius: 16px;
+  background-color: #ffffff;
+}
+
+.UpdateEmployee .MuiTypography-root {
+  color: #333;
+  font-weight: 500;
+}

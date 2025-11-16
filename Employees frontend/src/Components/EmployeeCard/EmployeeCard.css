@@ -1,0 +1,9 @@
+.EmployeeCard {
+  border-radius: 16px !important;
+  transition: transform 0.2s ease, box-shadow 0.3s ease !important;
+}
+
+.EmployeeCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.15) !important;
+}
