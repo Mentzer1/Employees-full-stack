@@ -41,6 +41,8 @@ export function EmployeeCard(props: EmployeeProps): JSX.Element {
       <CardContent>
         <Typography variant="h6" gutterBottom>
           {props.employee.first_name} {props.employee.last_name}
+          <br></br>
+          Nickname: {props.employee.nickname}
         </Typography>
         <Typography color="text.secondary">ID: {props.employee.id}</Typography>
         <Typography color="text.secondary">

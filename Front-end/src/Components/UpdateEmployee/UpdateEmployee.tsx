@@ -26,7 +26,9 @@ export function UpdateEmployee(): JSX.Element {
         .then((employee) => {
           setValue("first_name", employee.first_name);
           setValue("last_name", employee.last_name);
+          setValue("nickname", employee.nickname);
           setValue("email", employee.email);
+          
           setLoading(false);
         })
         .catch((err) => {
@@ -44,6 +46,7 @@ export function UpdateEmployee(): JSX.Element {
         navigate("/");
       })
       .catch((err) => {
+      alert(err.response?.data || "Failed to update employee.");
         console.log(err);
       });
   }
@@ -96,6 +99,14 @@ export function UpdateEmployee(): JSX.Element {
             {...register("last_name", { required: "Last name is required" })}
             fullWidth
           />
+
+          <TextField
+            label="Nickname"
+            variant="outlined"
+            {...register("nickname")}
+            fullWidth
+          />
+
 
           <TextField
             label="Email"

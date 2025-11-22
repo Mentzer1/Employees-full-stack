@@ -21,26 +21,37 @@ public class MainService {
     }
 
     public void updateEmployee(Employee employee){
-        if (employeeRepository.existsById(employee.getId())) // if the employee does already exist
-            employeeRepository.save(employee); // save the new data
+        if (!employeeRepository.existsById(employee.getId())) // if the employee doesnt already exist
+            throw new EmployeeException("Employee not found!"); // dont
+        else if(!emailCheck(employee.getEmail())) //check if the email is acceptable
+            throw new EmployeeException("Email must be gmail or outlook!"); //if not then throw
         else
-            throw new EmployeeException("Employee not found!"); // else dont
+            employeeRepository.save(employee); //if everything ok save
     }
 
     public String addEmployee(Employee employee) {
-        List<Employee> employees = employeeRepository.findAll(); // get all employees
+        if (employeeRepository.existsByEmail(employee.getEmail())) // if the employee does already exist
+            throw new EmployeeException("Email already exists!"); // dont save the employee
+        else if(!emailCheck(employee.getEmail()))//check if the email is acceptable
+            throw new EmployeeException("Email must be gmail or outlook!");//if not then throw
+         else
+            employeeRepository.save(employee); // else save the new data
 
-        for (Employee emp : employees){ // for each employee
-            if (emp.getEmail().equals(employee.getEmail())) //if the email equals the email of the employee we are trying to add
-                throw new EmployeeException("Email already exists"); // throw an exception
-        }
-        employeeRepository.save(employee); //else add the employee
         return "New employee added";
     }
 
     public String deleteEmployee(int employeeID){
         employeeRepository.deleteById(employeeID);
         return "Employee deleted";
+    }
+
+    public boolean emailCheck(String email){
+        if (email.endsWith("gmail.com") || email.endsWith("outlook.com")){
+
+            return true;
+        } else{
+            return false;
+        }
     }
 
 }

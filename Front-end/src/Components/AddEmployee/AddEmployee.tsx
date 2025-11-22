@@ -62,6 +62,15 @@ export function AddEmployee(): JSX.Element {
               />
 
               <TextField
+                label="Nickname"
+                variant="outlined"
+                {...register("nickname")}
+                error={!!formState.errors.nickname}
+                helperText={formState.errors.nickname?.message}
+              />
+
+
+              <TextField
                 label="Email"
                 variant="outlined"
                 type="email"
